@@ -1,0 +1,70 @@
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+<script src="/static/script.js"></script>
+</head>
+
+<body onload="startTimer()">
+
+<div class="container">
+
+<h2>MCQ Test</h2>
+
+<div class="timer-box">
+    Time Left: <span id="timer"></span>
+</div>
+
+<form id="quizForm" action="/submit-mcq" method="post">
+
+{% for q in mcqs %}
+
+{% set q_index = loop.index0 %}
+
+<div class="card">
+
+    {% if q.error %}
+
+        <p style="color:red;">{{ q.error }}</p>
+
+    {% else %}
+
+        <h3>Q{{ loop.index }}. {{ q.question }}</h3>
+
+        {% if q.options %}
+
+            {% for k,v in q.options.items() %}
+
+            <label class="option-label">
+
+                <input
+                    type="checkbox"
+                    name="q{{ q_index }}"
+                    value="{{ k }}"
+                >
+
+                <b>{{ k }}.</b> {{ v }}
+
+            </label>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p style="color:red;">Options not available</p>
+
+        {% endif %}
+
+    {% endif %}
+
+</div>
+
+{% endfor %}
+
+<button type="submit">Submit</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

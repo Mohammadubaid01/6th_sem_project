@@ -1,0 +1,68 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>MSQ Test</h2>
+
+    <form action="/submit-msq" method="post">
+
+        {% for q in msqs %}
+
+        <div class="card">
+
+            <h3>Q{{ loop.index }}.</h3>
+
+            {% if q is mapping %}
+
+                <p>{{ q.question }}</p>
+
+                {% if q.options %}
+
+                    {% set q_index = loop.index0 %}
+
+                    {% for k, v in q.options.items() %}
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="q{{ q_index }}"
+                            value="{{ k }}"
+                        >
+
+                        {{ k }}: {{ v }}
+
+                    </label>
+
+                    <br>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p style="color:red;">Options not available</p>
+
+                {% endif %}
+
+            {% else %}
+
+                <p style="color:red;">Invalid question format</p>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+body {
+    font-family: Arial;
+    background: #f4f6f9;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 70%;
+}
+
+.card{
+
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+    box-shadow:0 0 5px rgba(0,0,0,0.1);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+
+}
+.output-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    overflow-x: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+}
+
+.output-box ul{
+
+    padding-left:20px;
+
+}
+
+.output-box li{
+
+    margin-bottom:10px;
+
+}
+
+.output-box p{
+
+    margin-bottom:15px;
+
+}
+
+.nav {
+    background: #222;
+    padding: 10px;
+}
+
+.nav a {
+    color: white;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    width:auto;
+}
+
+
+.option-label{
+    display:block;
+    margin:10px 0;
+    padding:10px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.option-label:hover{
+    background:#f5f5f5;
+}
+
+.timer-box{
+    margin-bottom:20px;
+    font-size:18px;
+    font-weight:bold;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    width:auto;
+    margin-right:10px;
+}

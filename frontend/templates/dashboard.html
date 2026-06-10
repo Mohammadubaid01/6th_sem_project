@@ -1,0 +1,168 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <script>
+
+        function toggleHistory() {
+
+            const history = document.getElementById("chatHistory");
+
+            if (history.style.display === "none") {
+
+                history.style.display = "block";
+
+            } else {
+
+                history.style.display = "none";
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+<div class="nav">
+
+    <a href="/dashboard">Home</a>
+
+    <a href="/chat">Chat</a>
+
+    <a href="/summary">Summary</a>
+
+    <a href="/mcq">MCQ</a>
+
+    <a href="/msq">MSQ</a>
+
+    <a href="/analytics">Analytics</a>
+
+</div>
+
+<div class="container">
+
+    <h2>Upload File</h2>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+
+        <input type="file" name="file">
+
+        <button type="submit">
+            Upload
+        </button>
+
+    </form>
+
+    {% if error %}
+
+        <p style="color:red;">
+            {{ error }}
+        </p>
+
+    {% endif %}
+
+    {% if success %}
+
+        <p style="color:green;">
+            {{ success }}
+        </p>
+
+    {% endif %}
+
+    <h2>Generate Questions</h2>
+
+    <form action="/generate-questions" method="post">
+
+        <input
+            type="number"
+            name="num"
+            placeholder="No. of questions"
+        >
+
+        <button type="submit">
+            Generate
+        </button>
+
+    </form>
+
+    {% if output %}
+
+        <div class="output-box">
+
+            {{ output | safe }}
+
+        </div>
+
+    {% endif %}
+
+    <hr style="margin:40px 0;">
+
+    <h2>Chat History</h2>
+
+    <button
+        onclick="toggleHistory()"
+        style="
+            background:#007bff;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius:8px;
+            cursor:pointer;
+            margin-bottom:20px;
+        "
+    >
+        Show / Hide Chat History
+    </button>
+
+    <div id="chatHistory" style="display:none;">
+
+        {% if history %}
+
+            {% for item in history %}
+
+                <div
+                    style="
+                        background:white;
+                        padding:20px;
+                        border-radius:12px;
+                        margin-bottom:20px;
+                        box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                    "
+                >
+
+                    <h3>Question</h3>
+
+                    <p>
+
+                        {{ item[0] }}
+
+                    </p>
+
+                    <h3>Answer</h3>
+
+                    <div>
+
+                        {{ item[1] | safe }}
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No chat history available.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

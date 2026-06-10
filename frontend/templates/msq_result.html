@@ -1,0 +1,112 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>MSQ Test Result</h2>
+
+    <div
+        style="
+            background:#f4f4f4;
+            padding:20px;
+            border-radius:10px;
+            margin-bottom:30px;
+        "
+    >
+
+        <h3>
+
+            Your Score:
+            {{ score }}
+
+        </h3>
+
+    </div>
+
+    {% for result in results %}
+
+    <div class="card">
+
+        <h3>
+
+            Q{{ loop.index }}.
+            {{ result.question }}
+
+        </h3>
+
+        <p>
+
+            <strong>Your Answer:</strong>
+
+            {% if result.selected %}
+
+                {{ result.selected | join(", ") }}
+
+            {% else %}
+
+                No Answer Selected
+
+            {% endif %}
+
+        </p>
+
+        <p>
+
+            <strong>Correct Answer:</strong>
+
+            {{ result.correct_answers | join(", ") }}
+
+        </p>
+
+        <p>
+
+            <strong>Explanation:</strong>
+
+            {{ result.explanation }}
+
+        </p>
+
+        {% if result.is_correct %}
+
+            <p style="color:green; font-weight:bold;">
+
+                Correct
+
+            </p>
+
+        {% else %}
+
+            <p style="color:red; font-weight:bold;">
+
+                Incorrect
+
+            </p>
+
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+    <a href="/dashboard">
+
+        <button>
+
+            Go Back To Dashboard
+
+        </button>
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

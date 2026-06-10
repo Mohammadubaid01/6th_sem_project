@@ -1,0 +1,144 @@
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+<h2>Ask AI</h2>
+
+<!-- Loader -->
+<div id="loader" style="display:none;">⏳ Loading...</div>
+
+<!-- Updated Form -->
+<form method="post" action="/ask" onsubmit="showLoader()">
+    <input type="text" name="query" placeholder="Ask question" required>
+
+    <input type="text" name="user_answer" placeholder="Optional: Your answer">
+
+    <button>Ask</button>
+</form>
+
+{% if output %}
+<div class="card">
+    <h3>AI Answer:</h3>
+
+    <!-- IMPORTANT: safe because using markdown -->
+    <div class="output-box">
+    {{ output | safe }}
+    </div>
+
+    {% if score is not none %}
+    <p><b>Score:</b> {{ score }}</p>
+    <p><b>Feedback:</b> {{ feedback }}</p>
+    <p><b>Confidence:</b> {{ confidence }}</p>
+    {% endif %}
+</div>
+    {% endif %}
+
+    <h3>Chat History</h3>
+
+    {% for q,a in chats %}
+    <div class="card">
+        <b>Q:</b> {{ q }} <br>
+        <b>A:</b> {{ a }}
+    </div>
+    {% endfor %}
+
+</div>
+
+<!-- Loader Script -->
+<script>
+function showLoader() {
+    document.getElementById("loader").style.display = "block";
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+<h2>Ask AI</h2>
+
+<form action="/ask" method="post">
+    <input type="text" name="query" placeholder="Ask question" required>
+
+    <input type="text" name="user_answer" placeholder="Optional: Your answer">
+
+    <button>Ask</button>
+</form>
+
+{% if output %}
+<div class="card">
+    <h3>AI Answer:</h3>
+    <p>{{ output }}</p>
+
+    {% if score is not none %}
+    <p><b>Score:</b> {{ score }}</p>
+    <p><b>Feedback:</b> {{ feedback }}</p>
+    {% endif %}
+</div>
+{% endif %}
+
+<h3>Chat History</h3>
+
+{% for q,a in chats %}
+<div class="card">
+    <b>Q:</b> {{ q }} <br>
+    <b>A:</b> {{ a }}
+</div>
+{% endfor %}
+
+</div>
+</body>
+</html>  -->

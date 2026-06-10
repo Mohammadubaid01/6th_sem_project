@@ -1,0 +1,24 @@
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+<div class="container">
+
+    <h2>Summary</h2>
+
+    <form action="/summary" method="post">
+        <input type="text" name="topics" placeholder="Enter topics (optional)">
+        <button>Generate</button>
+    </form>
+
+    {% if summary %}
+    <div class="output-box">
+        {{ summary | safe}}
+    </div>
+    {% endif %}
+
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Weak Topics</h2>
+
+    {% if weak_topics %}
+
+        <ul>
+
+        {% for t in weak_topics %}
+            <li>{{ t }}</li>
+        {% endfor %}
+
+        </ul>
+
+    {% else %}
+
+        <p>No weak topics found.</p>
+
+    {% endif %}
+
+    <h2>Performance</h2>
+
+    {% if stats %}
+
+        {% for topic, data in stats.items() %}
+
+        <div class="card">
+
+            <b>{{ topic }}</b><br><br>
+
+            Accuracy:
+            {{ (data["accuracy"] * 100) | round(2) }}%
+            <br><br>
+
+            Average Time:
+            {{ data["avg_time"] | round(2) }} sec
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No analytics data available.</p>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

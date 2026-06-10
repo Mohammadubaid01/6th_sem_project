@@ -1,0 +1,26 @@
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Result</h2>
+
+    <p>Score: {{ score }} / {{ total }}</p>
+
+    {% for r in results %}
+    <div class="card">
+        <p>{{ r.question }}</p>
+        <p>Your Answer: {{ r.user_answer }}</p>
+        <p>Correct: {{ r.correct_answer }}</p>
+        <p>{{ r.explanation }}</p>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
