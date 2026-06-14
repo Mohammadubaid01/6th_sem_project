@@ -128,62 +128,7 @@ class FaissStore:
     
     
     
-    
-    
-    
-# import faiss
-# import pickle
-# import numpy as np
-# from src.config import FAISS_INDEX_PATH, CHUNKS_PATH
 
-# class FaissStore:
-#     def __init__(self):
-#         self.index = None
-#         self.chunks = None
-        
-# #     def build(self, vectors, chunks, uder_id):
-        
-#         dimension = vectors.shape[1]
-
-#         self.index = faiss.IndexFlatL2(dimension)
-#         self.index.add(vectors)
-
-#         # Save index
-#         faiss.write_index(self.index, FAISS_INDEX_PATH)
-
-#         # Save chunks
-#         with open(CHUNKS_PATH, 'wb') as f:
-#             pickle.dump(chunks, f)
-
-#         self.chunks = chunks  # keep in memory
-
-#         print(" FAISS index built and saved")
-
-#     def load(self):
-#         # Load the Faiss index
-#         self.index = faiss.read_index(FAISS_INDEX_PATH)
-#         # Load the chunks
-#         with open(CHUNKS_PATH, 'rb') as f:
-#             self.chunks = pickle.load(f)
-
-#     def search(self, query_vector, top_k=5):
-#         if self.index is None or self.chunks is None:
-#             raise ValueError("FaissStore not loaded. Call load() first.")
-        
-#         # Search the index for the nearest neighbors
-#         distances, indices = self.index.search(np.array([query_vector]), top_k)
-        
-#         # Retrieve the corresponding chunks
-#         results = []
-#         for idx in indices[0]:
-#             if idx < len(self.chunks):
-#                 results.append(self.chunks[idx])
-        
-#         return results
-    
-    
-    
-#     print("FAISS PATH:", FAISS_INDEX_PATH)
 
 
 
